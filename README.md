@@ -9,10 +9,6 @@
 
 Innovación y Desarrollo Tecnológico, Inteligencia Artificial, Edge computing y Tecnologías IoT.
 
-## Documentation Oficial 
-
-La documentación del framework puede ser encontrada en:
-
 ## Contribuciones
 
  Gracias a mi amigo Cristian quien colaboró en el desarrollo.
