@@ -1,0 +1,2 @@
+0 Presente
+1 Ausente
