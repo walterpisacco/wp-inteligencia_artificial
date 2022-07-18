@@ -138,9 +138,9 @@ class inicializarFRs(object):
                 if self.ban == False:
                     print(name)
                     try:
-                        print("Envio a MQTT platform.drexgen.com")
-                        self.mqtt.username_pw_set(username="admin", password="global*3522")
-                        self.mqtt.connect("platform.drexgen.com", 1883, 60)
+                        print("Envio a MQTT")
+                        self.mqtt.username_pw_set(username="", password="")
+                        self.mqtt.connect("", 1883, 60)
                         self.mqtt.publish("cmnd/010101/onoff/POWER",'on')
                         self.mqtt.publish("dsv/seg/od/R00001PI04V0001/DPublica5",'{"serie":"R00001PI04V0001","posx":"356.9709307059686","posy":"226"}')
                     except:
