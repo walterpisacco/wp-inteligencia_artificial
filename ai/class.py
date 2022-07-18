@@ -30,15 +30,14 @@ global client
 global frameid
 frameid = 0
 client = mqtt.Client()
-client.username_pw_set(username="walter",password="walter")
-#client.connect('platform.drexgen.com', 1883, 60)
-client.connect('ng.drexgen.com', 1883, 60)
+client.username_pw_set(username="",password="")
+client.connect('', 1883, 60)
 
 # agregado para estreaming a
 #Topico de Ejemplo = dsv/seg/hd/R00002PI04V0001/DPublica4
 #Mensaje de Ejemplo= {"ID": "D00001IA01V0001", "Foto": "/9j/4AAQSkZJR....."}
 
-#url = "https://platform.drexgen.com/dx-rrhh/img/faces/1/1.jpg?v=44"
+#url = "https://"
 #img = urllib.request.urlopen(url)
 img = "static/graph/yo.jpg"
 imagen_personal2 = face_recognition.load_image_file(img)  
