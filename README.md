@@ -1,5 +1,5 @@
 # Inteligencia Artificial Aplicada
-![Vision Artificial](https://github.com/walterpisacco/wp-realidad_aumentada/blob/main/dsv.png)
+![Vision Artificial](https://github.com/walterpisacco/wp-inteligencia_artificial/blob/main/dsv.png)
 # Python 3.8 + Javascript + Css
 
 [![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://www.python.org/downloads/)
