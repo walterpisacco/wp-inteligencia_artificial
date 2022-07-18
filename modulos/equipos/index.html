@@ -1,0 +1,113 @@
+{% include 'base/top.html' %}
+
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card ">
+            <div class="card-header card-header-icon card-header-rose">
+              <div class="card-icon">
+                <i class="material-icons">router</i>
+              </div>
+              <h4 class="card-title">Equipos</h4>
+              <button class="btn btn-sm btn-round btn-reddit" onClick="AgregarEquipo();">
+                    Agregar
+              </button>              
+            </div>
+            <div class="card-body ">
+              <div class="row" >
+                <div class="col-md-12" >
+                  <div id="divFiltros" name="divFiltros">
+                    <table id="tblDatos"></table>
+                    <div id="pagDatos" >
+                    </div>
+                  </div>  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="modalEquipo" tabindex="-1" role="dialog" aria-hidden="true" style="background-color: hsl(0deg 0% 0% / 56%);">
+  <div class="modal-dialog" style="min-width: 50%;">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card ">
+            <div class="card-header card-header-icon card-header-rose">
+            <div class="card-icon">
+              <i class="material-icons">router</i>
+            </div>
+            <h4 class="card-title" id="spEquipo">Equipo</h4>
+            </div>
+              <div class="card-body ">
+                <div class="card-content">
+                  <h4 class="card-title"></h4>
+                      <div class="col-md-12">
+                        <div id="frmEquipo" class="panel-info drexgen-water">
+                            <input type="hidden" class="form-control limp" id="idEquipo" name="idEquipo">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                   <div class="form-group label-floating">
+                                    <label class="bmd-label-floating">Tipo</label>
+                                      <select name="tipo" id="tipo" class="selectpicker" data-style="btn btn-info btn-round">
+                                     </select>
+                                  </div>
+                                </div>
+                                <div class="col-md-1">
+                                </div>                                
+                                <div class="col-md-5">
+                                   <div class="form-group label-floating">
+                                      <label class="bmd-label-floating">Estado</label>
+                                      <select name="estado" id="estado" class="selectpicker" data-style="btn btn-info btn-round">
+                                        <option value="1">Activo</option>
+                                        <option value="2">Inactivo</option>
+                                     </select>
+                                  </div>
+                                </div>                                
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                  <label class="bmd-label-floating">Nombre</label>
+                                  <input id="nombre" name="nombre" type="text" class="form-control limp fieldRequired">
+                                </div>                               
+                                <div class="col-md-6">
+                                  <label class="bmd-label-floating">Marca y Modelo</label>
+                                  <input id="marca" name="marca" type="text" class="form-control limp">
+                                </div>
+                            </div>
+                            <div class="form-row">    
+                                <div class="col-md-6">
+                                  <label class="bmd-label-floating">Serie</label>
+                                  <input id="serie" name="serie" type="text" class="form-control limp fieldRequired">
+                                </div> 
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4 offset-md-2">
+                                <a type="button" class="btn btn-default btn-round btn-guardar" data-dismiss="modal">Cerrar</a>
+                              </div>          
+                              <div class="col-md-4">
+                                <button type="buttton" id="btnGuardar" name="btnGuardar" class="btn btn-success btn-round btn-guardar">Guardar</button>
+                              </div>
+                            </div>  
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript"  src="static/js/modulos/equipos.js?v=1.1"></script>
+</body>
+
+</html>
+

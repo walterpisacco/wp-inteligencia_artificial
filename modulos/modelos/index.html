@@ -1,0 +1,120 @@
+{% include 'base/top.html' %}
+
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card ">
+            <div class="card-header card-header-icon card-header-rose">
+              <div class="card-icon">
+                <i class="material-icons">view_in_ar</i>
+              </div>
+              <h4 class="card-title">Modelos</h4>
+              <button class="btn btn-sm btn-round btn-reddit" onClick="AgregaModelo();">
+                    Importar
+              </button>             
+            </div>
+            <div class="card-body ">
+              <div class="row" >
+                <div class="col-md-12" >
+                  <div id="divFiltros" name="divFiltros">
+                    <table id="tblDatos"></table>
+                    <div id="pagDatos" >
+                    </div>
+                  </div>  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade right" id="modalImportar" role="dialog">
+    <div class="modal-dialog modal-right modal-notify modal-info" role="document"  style="min-width: 40%;">
+        <div class="modal-content">
+            <div class="modal-header">
+              <p class="heading lead">Importar Modelo</p>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" class="white-text">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+             <form id ="formModelos"> 
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="row">
+                   <div class="col-md-12"> 
+                   <div class="form-group label-floating">
+                      <select name="tipo" id="tipo" class="selectpicker" data-style="btn btn-info btn-round">
+                        <option value="">Seleccione..</option>
+                        <option value="tflite">Reconocimiento (TensorFlow Lite (.tflite))</option>
+                        <option value="h5">Reconocimiento (tensorflow keras (.h5) )</option>
+                        <option value="pickle">Identificación (.pickle)</option>
+                        <option value="pt">Identificación (.pt)</option>
+                     </select>
+                  </div>
+                </div>
+                </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                       <div class="form-group label-floating">
+                          <label style="font: caption;" class="bmd-label-floating">Nombre</label>
+                          <a href="#" class="tip" rel="popover" data-content="No ingrese espacios ni caracteres especiales" data-original-title="<strong>Nombre del Modelo</strong>"><i class="material-icons">help_outline</i>
+                          </a>                      
+                          <input style="font-size: x-large;text-align: center;" type="text" class="fieldRequired form-control limp" id="modelo" name="modelo">
+                      </div>
+                   </div> 
+                </div>
+                </div>  
+                <div class="col-md-4">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group label-floating">
+                        <div class="picture-container caja" style="text-align: center;">
+                          <div class="picture box">
+                            <img style="" id="img" src="static/graph/subir.png?v1"/>
+                            <input id="uploadedFile" type="file" accept=".zip">
+                          </div>
+                          <h6 class="description">Cargar Archivos</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 text-center">
+                        <span style="color: lightblue;font-size: smaller;" id="spArchivo">Ningún Archivo Seleccionado</span>
+                    </div>
+                  </div>
+                </div>                          
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                   <div class="form-group label-floating">
+                      <label style="font: caption;" class="bmd-label-floating">Descripción</label>
+                    <input style="font-size: x-large;" type="text" class="form-control limp" id="descripcion" name="descripcion">
+                  </div>
+                </div>  
+              </div>
+              <div class="row">
+                  <div class="col-md-6">
+                      <a style="width: 100%;text-align: center;" type="button" class="btn btn-default btn-round" data-dismiss="modal">Cerrar</a>    
+                  </div>
+                  <div class="col-md-6">                            
+                      <a style="width: 100%;text-align: center;" type="button" onclick="GuardarImportacion();" class="btn btn-success btn-round"></i>Importar</a>
+                  </div>                
+              </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"  src="static/js/modulos/modelos.js?v=1.3"></script>
+<script type="text/javascript"  src="static/js/funciones.js?v=1.0"></script>
+
+</body>
+
+</html>
+

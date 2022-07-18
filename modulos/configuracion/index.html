@@ -1,0 +1,558 @@
+{% include 'base/top.html' %}
+
+<style type="text/css">
+  .mobileHide {
+    display: inline;
+  }
+  /* Smartphone Portrait and Landscape */
+  
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .mobileHide {
+      display: none;
+    }
+  }
+
+  @media only screen and (min-device-width: 480px){
+    .mobileShow {
+      display: none;
+    }
+  }
+
+.imgCarrousel{
+  /*  margin-left: 40px;*/
+    height: 89px;
+    height: 100px;
+}
+
+
+@-webkit-keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 4));
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 4));
+  }
+}
+.slider {
+  height: 175px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.slider::before, .slider::after {
+  content: "";
+  height: 100px;
+  position: absolute;
+  width: 200px;
+  z-index: 2;
+}
+.slider::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+.slider::before {
+  left: 0;
+  top: 0;
+}
+.slider .slide-track {
+  -webkit-animation: scroll 20s linear infinite;
+          animation: scroll 20s linear infinite;
+  display: flex;
+  width: calc(180px * 8);
+}
+.slider .slide {
+  height: 100px;
+  width: 180px;
+}
+
+</style>
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card ">
+            <div class="card-header card-header-icon card-header-rose">
+              <div class="card-icon">
+                <i class="material-icons">photo_camera_front</i>
+              </div>
+              <h4 class="card-title">Configuración de los dispositivos</h4>
+              <button class="btn btn-sm btn-round btn-reddit" onClick="AgregarDispositivo();">
+                    Agregar
+              </button>               
+            </div>
+            <div class="card-body ">
+              <div class="row" >
+                <div class="col-md-12" >
+                  <div id="divFiltros" name="divFiltros">
+                    <table id="tblDatos"></table>
+                    <div id="pagDatos" >
+                    </div>
+                  </div>  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="modalEquipo" tabindex="-1" role="dialog" aria-hidden="true" style="background-color: hsl(0deg 0% 0% / 56%);">
+  <div class="modal-dialog" style="min-width: 99%;">
+    <div class="modal-content">
+    <div class="modal-header">
+      <div class="text-center">
+        <span style="font-size: x-large;" id="spDispositivo" name="spDispositivo">Dispositivos</span> 
+      </div>
+    </div>      
+      <div class="modal-body" id="frmDispositivo">
+        <input type="hidden" class="limp" id="idDispositivo" name="idDispositivo">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="row" style="display:none">
+                <div class="col-md-12">
+                  <div class="card" style="">
+                    <div class="card-header card-header-icon card-header-rose">
+                    <div class="card-icon">
+                      <i class="material-icons">photo_camera_front</i>
+                    </div>
+                    <h4 class="card-title">Dispositivo</h4>
+                    </div>
+                    <div class="card-body ">
+                      <div class="card-content">
+                    <div class="row">
+                      <div class="col-md-12">
+                          <select name="equipo" id="equipo" class="selectpicker" data-style="btn btn-info btn-round">
+                         </select>
+                      </div>
+                    </div>                        
+                        <div class="form-row">
+                            <div class="col-md-12">
+                               <div class="form-group label-floating">
+                                  <select name="tipo" id="tipo" class="selectpicker" data-style="btn btn-info btn-round">
+                                 </select>
+                              </div>
+                            </div> 
+                            <div class="col-md-5" style="display: none;">
+                               <div class="form-group label-floating">
+                                  <select name="marca" id="marca" class="selectpicker" data-style="btn btn-info btn-round">
+                                 </select>
+                              </div>
+                            </div> 
+                        </div>
+                        <div class="row">
+                          <div class="col-md-5">
+                            <label class="bmd-label-floating">Serie</label>
+                            <input id="serie" name="serie" type="text" class="form-control limp fieldRequired">
+                          </div>                             
+                          <div class="col-md-7">
+                            <label class="bmd-label-floating">Nombre</label>
+                            <input id="nombre" name="nombre" type="text" class="form-control limp fieldRequired">
+                          </div>
+                      </div>                           
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-header card-header-icon card-header-rose">
+                    <div class="card-icon">
+                      <i class="material-icons">view_in_ar</i>
+                    </div>
+                    <h4 class="card-title">Análítica Aplicada</h4>
+                    </div>
+                    <div class="card-body ">
+                      <div class="card-content">
+                        <div class="form-row">
+                            <div class="col-md-12">
+                              <select class="selectpicker" data-style="btn btn-info btn-round" id="modelo" name="modelo">
+                              </select>
+                            </div>
+                            <div class="col-md-12">
+                              <select class="selectpicker" data-style="btn btn-info btn-round" id="analitica" name="analitica">
+                              </select>
+                            </div>   
+                            <div class="col-md-12">
+                                  <select name="webcamInput" id="webcamInput" class="selectpicker" data-style="btn btn-info btn-round">
+                                    <option value="0">Cámara Local 0</option>
+                                    <option value="1">Cámara Local 1</option>
+                                    <option value="2">Cámara Local 2</option>
+                                    <option value="3">Cámara Local 3</option>
+                                    <option value="4">Dirección RTSP</option>
+                                    <option value="5">Video Local</option>
+                                    <option value="6">Video Youtube</option>
+                                 </select>
+                            </div>
+                            <div class="col-md-10">
+                                <input style="display: none" id="ruta" name="ruta" type="text" class="form-control limp">
+                            </div>                            
+                            <div class="col-md-2">    
+                                  <div class="picture box" id="btnSubir" name="btnSubir">
+                                    <img style="width: 50px;" id="img" src="static/graph/subir.png?v1"/>
+                                    <input id="uploadedFile" type="file" accept=".mp4">
+                                  </div>
+                            </div>
+                        </div>                                          
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+              <div class="row" style="display: '';">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header card-header-icon card-header-rose">
+                  <h4 class="card-title">Buscando..</h4>
+                  </div>
+                  <div class="card-body ">
+                    <div class="card-content">
+                      <div class="row">
+                          <div class="col-sm-12">
+                              <div class="slider">
+                                  <div class="slide-track">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+               </div>   
+              </div>               
+              </div>
+              <div class="col-md-6">
+                <div class="row" style="margin-left: -26px;margin-right: -14px;">
+                <div class="card" style="margin-bottom: 10px;min-height: 550px;">
+                  <div class="card-header card-header-icon card-header-rose">
+                  </div>
+                  <div class="card-body" style="padding: 0 0 0 0;">
+                    <div class="card-content" style="padding: 5px 5px;">
+                      <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div id="video_validado">
+                              <img src="/static/graph/camara.jpg">
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+              <div class="col-md-3">
+                <div class="row">
+                <div class="card" style="min-height: 550px;">
+                  <div class="card-header card-header-icon card-header-rose">
+                  <div class="card-icon">
+                    <i class="material-icons">circle_notifications</i>
+                  </div>
+                  <h4 class="card-title">Salida de Eventos</h4>
+                  </div>
+                  <div class="card-body ">
+                    <div class="card-content" style="padding: 15px 0px;">
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label class="bmd-label-floating">
+                            <div class="form-check"> 
+                              <i class="material-icons">email</i> <label>Email</label>
+                            </div>
+                          </label>
+                        </div>
+                        <div class="col-md-7">
+                          <input type="text" class="form-control limp " name="comu1" id="comu1">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label class="bmd-label-floating">
+                            <div class="form-check"> 
+                              <i class="material-icons">near_me</i> <label>Telegram</label>
+                            </div>
+                          </label>
+                        </div>
+                        <div class="col-md-7">
+                          <input type="text" class="form-control limp " name="comu2" id="comu2">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label class="bmd-label-floating">
+                            <div class="form-check"> 
+                              <i class="material-icons">edgesensor_high</i> <label>WhatsApp</label>
+                            </div>
+                          </label>
+                        </div>
+                        <div class="col-md-7">
+                          <input type="text" class="form-control limp " name="comu3" id="comu3">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label class="bmd-label-floating">
+                            <div class="form-check"> 
+                              <i class="material-icons">http</i> <label>HTTP</label>
+                            </div>
+                          </label>
+                        </div>
+                        <div class="col-md-7">
+                          <input type="text" class="form-control limp " name="comu4" id="comu4">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label class="bmd-label-floating">
+                            <div class="form-check"> 
+                              <i class="material-icons">language</i> <label>ClientApi</label>
+                            </div>
+                          </label>
+                        </div>
+                        <div class="col-md-7">
+                          <input type="text" class="form-control limp " name="comu5" id="comu5">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label class="bmd-label-floating">
+                            <div class="form-check"> 
+                              <i class="material-icons">router</i> <label>MQTT Server</label>
+                            </div>
+                          </label>
+                        </div>
+                        <div class="col-md-7">
+                          <input type="text" class="form-control limp " name="comu6" id="comu6">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-5">
+                          <label class="bmd-label-floating">
+                            <div class="form-check"> 
+                              <i class="material-icons">touch_app</i> <label>Encender</label>
+                            </div>
+                          </label>
+                        </div>
+                        <div class="col-md-7">
+                          <div style= "min-width: 120px;" id="view" class="make-switch " data-on="danger" data-text-label="Pin" data-off="default" data-on-label="SI" data-off-label="NO">
+                          <input type="checkbox" checked="" />
+                          </div>
+                          <div style= "min-width: 120px;" id="dron" class="make-switch " data-on="danger" data-text-label="Dron" data-off="default" data-on-label="SI" data-off-label="NO">
+                          <input type="checkbox" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <a type="button" id="btnCerrar" class="btn btn-default btn-round btn-guardar" data-dismiss="modal">Cerrar</a>
+                  </div>
+                  <div class="col-md-6">
+                    <button type="buttton" id="btnGuardarSalir" name="btnGuardarSalir" class="btn btn-warning btn-round btn-guardar">Guardar</button>
+                  </div>            
+                </div>
+              <div class="row">
+                <div class="col-md-12">            
+                  <button type="buttton" id="btnEjecutar" name="btnEjecutar" class="btn btn-success btn-round btn-guardar">Previsualizar Análisis</button>
+                </div>   
+                </div>                 
+
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade right" id="modalDispositivo" role="dialog">
+    <div class="modal-dialog modal-right modal-notify modal-info" role="document"  style="min-width: 30%;">
+        <div class="modal-content">
+            <div class="modal-header">
+              <p class="heading lead">Tipo de Dispositivo</p>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" class="white-text">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-6 text-center">
+                    <button id="btnCamara" name="btnCamara" class="btn btn-warning">
+                      <i class="material-icons">photo_camera_front</i> Cámara/ESP232
+                    <div class="ripple-container"></div></button>
+                </div>
+                <div class="col-md-6 text-center">
+                    <button  id="btnBLE" name="btnBLE"  class="btn btn-behance">
+                      <i class="material-icons">bluetooth_searching</i> Dispositivo BLE
+                    <div class="ripple-container"></div></button>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalBLE" tabindex="-1" role="dialog" aria-hidden="true" style="background-color: hsl(0deg 0% 0% / 56%);">
+  <div class="modal-dialog" style="min-width: 50%;">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card ">
+            <div class="card-header card-header-icon card-header-rose">
+            <div class="card-icon">
+              <i class="material-icons">router</i>
+            </div>
+            <h4 class="card-title" id="spBLE">Dispositivo BLE</h4>
+            </div>
+              <div class="card-body ">
+                <div class="card-content">
+                  <h4 class="card-title"></h4>
+                      <div class="col-md-12">
+                        <div id="frmBLE" class="panel-info drexgen-water">
+                            <input type="hidden" class="form-control limp" id="idBLE" name="idBLE">
+                            <div  class="form-row">
+                              <div class="col-md-6">
+                               <div class="form-group label-floating">
+                                <label class="bmd-label-floating">Equipo Asociado</label>
+                                  <select name="equipoBLE" id="equipoBLE" class="selectpicker" data-style="btn btn-info btn-round">
+                                 </select>
+                              </div>
+                            </div>
+                            <div class="col-md-5 offset-md-1" style="display: none">
+                               <div class="form-group label-floating">
+                                  <label class="bmd-label-floating">Estado</label>
+                                  <select name="estadoBLE" id="estadoBLE" class="selectpicker" data-style="btn btn-info btn-round">
+                                    <option value="1">Activo</option>
+                                    <option value="2">Inactivo</option>
+                                 </select>
+                              </div>
+                            </div>                               
+                            </div>
+                            <div class="form-row">
+                              <div class="col-md-6">
+                                 <div class="form-group label-floating">
+                                  <label class="bmd-label-floating">Tipo</label>
+                                    <select name="tipoBLE" id="tipoBLE" class="selectpicker" data-style="btn btn-info btn-round">
+                                   </select>
+                                </div>
+                              </div>
+                              <div class="col-md-5  offset-md-1">
+                                 <div class="form-group label-floating">
+                                  <label class="bmd-label-floating">Marca</label>
+                                    <select name="marcaBLE" id="marcaBLE" class="selectpicker" data-style="btn btn-info btn-round">
+                                   </select>
+                                </div>
+                              </div>                               
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                  <label class="bmd-label-floating">Nombre</label>
+                                  <input id="nombreBLE" name="nombreBLE" type="text" class="form-control limp fieldRequired">
+                                </div>                               
+                                <div class="col-md-6">
+                                  <label class="bmd-label-floating">Serie</label>
+                                  <input id="serieBLE" name="serieBLE" type="text" class="form-control limp fieldRequired">
+                                </div> 
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4 offset-md-2">
+                                <a type="button" class="btn btn-default btn-round btn-guardar" data-dismiss="modal">Cerrar</a>
+                              </div>          
+                              <div class="col-md-4">
+                                <button type="buttton" id="btnGuardarBLE" name="btnGuardarBLE" class="btn btn-success btn-round btn-guardar">Guardar</button>
+                              </div>
+                            </div>  
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalEntrenar" tabindex="-1" role="dialog" aria-hidden="true" style="background-color: hsl(0deg 0% 0% / 56%);">
+  <div class="modal-dialog" style="min-width: 60%;">
+    <div class="modal-content">
+    <div class="modal-header">
+      <div class="text-center">
+        <span style="font-size: x-large;" id="spEntrenar" name="spEntrenar">Cámara</span> 
+      </div>
+    </div>      
+      <div class="modal-body" id="frmEntrenar">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="row">
+                <input type="hidden" class="form-control limp" id="idCamara" name="idCamara">
+              <div class="card" style="margin-bottom: 30px;">
+                <div class="card-header card-header-icon card-header-rose">
+                <div class="card-icon">
+                  <i class="material-icons">filter_center_focus</i>
+                </div>
+                <h4 class="card-title">Video en Vivo</h4>
+                </div>
+                <div class="card-body ">
+                  <div class="card-content">
+                    <div class="row">
+                      <div class="col-md-12 text-center">
+                          <div id="video">
+                            <img src="/static/graph/camara.jpg">
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+              <div class="col-md-4">
+                <div class="row">
+                  <div class="col-md-10">
+                    <label class="bmd-label-floating">Nombre del video a generar</label>
+                    <input type="text" class="form-control limp" id="nombreArchivo" name="nombreArchivo">
+                  </div>
+                </div> 
+                <div class="row">
+                  <button style="display: none" type="buttton" id="btnDetener" name="btnDetener" class="btn btn-danger btn-round btn-guardar">Detener</button>
+                </div>
+            </div> 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 offset-md-1">
+              <a type="button" class="btn btn-default btn-round btn-guardar" data-dismiss="modal">Cerrar</a>
+            </div>
+            <div class="col-md-3">            
+              <button type="buttton" id="btnVideo" name="btnVideo" class="btn btn-success btn-round btn-guardar">Generar Video</button>
+            </div>
+            <div class="col-md-3">            
+              <button type="buttton" id="btnFotograma" name="btnFotograma" class="btn btn-success btn-round btn-guardar">Generar Fotogramas</button>
+            </div>  
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript"  src="static/js/modulos/configuracion.js?v=2.2"></script>
+</body>
+
+</html>
+
