@@ -185,15 +185,15 @@ class inicializarALPR(object):
 
                             playsound(NOMBRE_ARCHIVO)
                             
-                            print("Envio a MQTT platform.drexgen.com")
-                            self.mqtt.username_pw_set(username="admin", password="global*3522")
-                            self.mqtt.connect("platform.drexgen.com", 1883, 60)
+                            print("Envio a MQTT")
+                            self.mqtt.username_pw_set(username="", password="")
+                            self.mqtt.connect("", 1883, 60)
                             self.mqtt.publish("dsv/seg/alpr/32CE115044/alerta/DPublica1",'{"ID": "32CE115044", "Date": "2022-05-20 16:00:39","Pais":"Argentina", "Marca": "volkswagen", "Modelo": "fiat_strada", "Fecha": "2005-2009", "Color": "white", "Tipo": "truck-standard", "Patente": "'+patente+'"}')
                             print("Patente nueva: ",patente)
 
                             self.patenteCant = 1
                         except:
-                            print("No conecta con MQTT platform.drexgen.com")
+                            print("No conecta con MQTT")
                     else:
                         self.patenteCant = self.patenteCant + 1
 
