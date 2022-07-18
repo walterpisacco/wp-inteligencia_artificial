@@ -1,4 +1,4 @@
-# DSV Inteligencia Artificial Aplicada
+# Inteligencia Artificial Aplicada
 # Python 3.8 + Javascript + Css
 
 [![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://www.python.org/downloads/)
