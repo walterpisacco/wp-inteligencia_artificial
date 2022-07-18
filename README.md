@@ -1,4 +1,5 @@
 # Inteligencia Artificial Aplicada
+# Inteligencia Artificial Aplicada
 ![Vision Artificial](https://github.com/walterpisacco/wp-inteligencia_artificial/blob/main/ia.png)
 # Python 3.8 + Javascript + Css
 
