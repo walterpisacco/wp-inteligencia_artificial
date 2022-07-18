@@ -6,7 +6,7 @@
 [![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://www.python.org/downloads/)
 [![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://docs.python.org/3/license.html)
 
-Somos una compañía dedicada a la innovación y desarrollo tecnológico. Somos pioneros en Inteligencia Artificial, Edge computing y Tecnologías IoT.
+Innovación y Desarrollo Tecnológico, Inteligencia Artificial, Edge computing y Tecnologías IoT.
 
 ## Documentation Oficial 
 
@@ -14,14 +14,10 @@ La documentación del framework puede ser encontrada en:
 
 ## Contribuciones
 
- Cristian, Falime y Walter  colaboran en el desarrollo.
+ Gracias a mi amigo Cristian quien colaboró en el desarrollo.
 
 ## Securidad
 Requiere acceso a base de datos de prueba Mysql, estas conexiones se encuentran a disposición de quien así lo requiera
-
-## Licencia
-
-DSV es un software licenciado.
 
 ## Instalación
 
