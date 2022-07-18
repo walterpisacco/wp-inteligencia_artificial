@@ -1,5 +1,7 @@
 # Inteligencia Artificial Aplicada
-# Inteligencia Artificial Aplicada
+# Reconocimiento de Personas
+# Reconocimiento de Objetos
+# Reconocimiento de Patentes
 ![Vision Artificial](https://github.com/walterpisacco/wp-inteligencia_artificial/blob/main/ia.png)
 # Python 3.8 + Javascript + Css
 
